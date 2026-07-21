@@ -31,7 +31,7 @@ This keeps each layer testable in isolation and mirrors how a production robo-ad
 1. **Rounding consistency** — Independent rounding per stock can leave totals off by a cent or fractional share. Largest-remainder fixes this while staying deterministic.
 2. **Market-hours edge cases** — Weekends, pre-market, and after-hours submissions all need a predictable next-open time without a holiday calendar.
 3. **Ambiguous sell semantics** — The spec does not define sell-by-shares vs sell-by-dollar; I treated SELL the same as BUY using dollar amounts.
-4. **In-memory vs file persistence** — The challenge requires data not to survive restart. I used an in-memory `db.json` shape rather than writing mutations back to disk.
+4. **In-memory vs file persistence** — The challenge requires data not to survive restart. I used an in-memory data structure.
 
 ## If you were to migrate your code from its current standalone format to a fully functional production environment, what are some changes and controls you would put in place?
 
