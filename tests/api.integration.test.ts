@@ -71,6 +71,12 @@ describe('API integration', () => {
     expect(response.status).toBe(400);
   });
 
+  it('sets an X-Response-Time header on responses', async () => {
+    const response = await request(app).get('/api/orders');
+    expect(response.status).toBe(200);
+    expect(response.headers['x-response-time']).toMatch(/^\d+(\.\d+)?ms$/);
+  });
+
   it('respects limit query param on GET /api/orders', async () => {
     await request(app).post('/api/model').send({
       type: 'BUY',
